@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div id="particles-js"></div>
+
+
+	
+<nav class="navbar">
+    <div class="linee top"></div>
+    <ul>
+        <li><a class="navbar-brand" th:href="@{/}">Home</a></li>
+    </ul>
+    <div class="linee bottom"></div>
+    <img alt="Logo" style="width: 12%; " src="/K.png" class="logo3">
+    
+</nav>
+	
+	
+	
+
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+				
+				<h1>Mixed login</h1>
+				
+				<form th:action="@{/login}" method="post">
+					
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div id="mensaje" class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+				
+					<!-- logout message -->
+					<div th:if="${param.logout}">
+						<div id="mensaje" class="alert alert-info">You have been logged out.</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					<div class = "form-group">
+						<label for ="username" > Username </label> :
+						<input type="text" class="form-control hacker-input" id ="username" name = "username"
+						placeholder="Enter Email ID" autofocus="autofocus">
+					</div>
+					
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control hacker-input"
+							placeholder="Enter Password" />
+					</div>
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary hacker-btn" value="Log In" />
+							</div>
+						</div>
+					</div>	
+				</form>
+				
+				
+				
+				
+				
+				
+				
+				
+				<div class="form-group">
+						<span>New user? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+				</div>
+								<div class="form-group">
+						<span>New Admin? <a th:href="@{/registrationAdmin}">Register
+								here</a></span>
+				</div>
+			
+				<div class="form-group">
+						<span>Login with Google <a href="/oauth2/authorization/google" >Init here</a></span>
+				</div>
+				<div class="form-group">
+						<span>Reset Password <a href="/registrationAdmin/inputResetPassword" >Olvide mi Constraseña</a></span>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	<script ht:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var errorContainer = document.getElementById('mensaje');
+            if (errorContainer) {
+                errorContainer.style.display = 'none';
+            }
+        }, 2000);
+    });
+</script>
+
+
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+</html>

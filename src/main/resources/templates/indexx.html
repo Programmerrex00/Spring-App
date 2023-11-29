@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	
+	
+</head>
+<body>
+	
+	<div id="particles-js"></div>
+	
+	
+<nav class="navbar">
+    <div class="line top"></div>
+    <ul>
+        <li><a class="navbar-brand" th:href="@{/}">Home</a></li>
+        <li><a id="rol" class="navbar-brand" href="#" th:href="@{/login}">Log in</a></li>
+        <li><a class="navbar-brand" href="#" th:href="@{/registration}">Sign up</a></li>
+        <li><a class="navbar-brand" th:href="@{/conocenos}">Conócenos</a></li>
+    </ul>
+    <div class="line bottom"></div>
+    <img alt="Logo" style="width: 12%; " src="/K.png" class="logo3">
+    
+</nav>s
+		
+		
+		
+<div class="container">
+  <h2 style="color: green;">Servicios Tecnologicos</h2>
+  <p style="color: green; font-size: 17px;">Los servicios tecnológicos engloban una diversidad de prestaciones diseñadas para aprovechar la tecnología en beneficio de usuarios y empresas. <br>
+	  Estos servicios abarcan desde el desarrollo de software y la gestión de redes hasta la asesoría en ciberseguridad y la implementación de soluciones digitales.<br>
+	   La rápida evolución tecnológica ha dado lugar a un panorama dinámico en el que los servicios tecnológicos son fundamentales para la eficiencia, la innovación y la competitividad.</p>
+	<br>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/main.gif" target="_blank">
+          <img src="/main.gif" alt="Lights" style="width:140%">
+          <div class="caption">
+            <p>Desarrolo blockchain.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/gif2.gif" target="_blank">
+          <img src="/gif2.gif" alt="Nature" style="width:140%">
+          <div class="caption">
+            <p>Desarrollo Elite de Software.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/gif3.gif" target="_blank">
+          <img src="/gif3.gif" alt="Fjords" style="width:140%">
+          <div class="caption">
+            <p>Programacion 24/7.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+		
+		
+		
+		
+	<br><br><br><br><br><br>
+	
+	
+	
+	<table>
+		<tbody>
+			<tr th:each="servicio: ${servicios}" style="text-align: center;">
+			<td>
+				
+				<a href="#" th:href="@{/registration}" style="text-decoration: none;">
+				<img class="img-thumbnail" th:if="${servicio.imagen != null}" th:src="@{'/registration/showImage/' + ${servicio.id}}" alt="Servicio Image" style="width: 80%;"/>
+			    <span th:if="${servicio.imagen == null}">No hay imagen disponible</span>
+				
+				<h2>[[ ${servicio.nombre} ]]</h2>
+				<h4 style="max-width: 50%; margin-left: 25%;">[[ ${servicio.descripcion} ]]</h4>
+			 <form th:action="@{/registration}" method="get" th:object="${user}" style="margin-bottom: 10%">
+	            <input type="hidden" th:name="servicioId" th:value="${servicio.id}" />
+	            <input type="hidden" th:name="userEmail" th:value="${email}" />
+	            <button type="submit" class="btn btn-outline-primary">Comprar Servicio</button>
+	        </form>
+				</a>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<div id="styleMap">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208957.83136148666!2d-106.84128652347884!3d35.08257938733866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87220addd309837b%3A0xc0d3f8ceb8d9f6fd!2sAlbuquerque%2C%20Nuevo%20M%C3%A9xico%2C%20EE.%20UU.!5e0!3m2!1ses!2sco!4v1701134685774!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Contacto</h3>
+            <p>Email: maicolcubidespe@gmail.com</p>
+            <p>Teléfono: +57 321 400 36 84</p>
+        </div>
+        <div class="footer-column">
+            <h3>Redes Sociales</h3>
+            <ul class="social-icons">
+                <li> <img width="190px" src="https://img.icons8.com/fluency/48/facebook.png" alt="facebook"/></li>
+                <li><img width="190px" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram-new"/></li>
+                <li><img width="190px" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2"/></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+
+
+</body>
+</html>

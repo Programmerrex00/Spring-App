@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+       <meta charset="ISO-8859-1">
+    <title>Ver Carrito</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>      
+	<link rel="stylesheet" type="text/css" href="/style.css">	
+	<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+</head>
+<body>
+	<div id="particles-js"></div>
+
+
+
+	<nav class="navbar">
+    <div class="lineeee top"></div>
+    <ul>
+        <li><a class="navbar-brand" th:href="@{/}">Home</a></li>
+		 
+		 <li><a class="navbar-brand" href="#" th:href="@{/registration/PaginaPrincipal(userEmail=${usuario.email})}">Volver</a></li>
+
+         <li style="color: forestgreen;" sec:authorize="isAuthenticated()"><a th:href="@{/logout}">
+			<img width="30" height="30" style="color: green;" src="https://img.icons8.com/ios/50/exit--v1.png" alt="exit--v1"/>
+		</a></li>    
+    </ul>
+
+    <div class="lineeee bottom"></div>
+		<li style="margin-left: 66%; margin-top: -80px;">
+			<div>
+				<img th:if="${user.imagen != null}" th:src="@{'/registration/showImageUserPerfil/' + ${user.id}}"
+					alt="User Image" style="width: 19%; margin-left: 70%;" />
+				<span th:if="${user.imagen == null}">
+					<img alt="Logo" style="width: 19%;" src="/SinFoto.png" class="logo3">
+				</span>
+				<p style="color: rgb(0, 128, 0); font-size: 20px; margin-left: 73%;" th:text="${usuario.email}">N/A</p>
+			</div>
+		</li>
+    
+</nav>
+
+
+
+
+
+ 		<br><br><br><br><br>
+
+ 		
+ 		<div id="mensaje" th:if="${faltaDinero != null}" class="alert alert-danger">
+    		<div id="mensaje" th:text="${faltaDinero}"></div>
+		</div>
+		 <div id="mensaje" th:if="${pagoRealizado != null}" class="alert alert-danger">
+    		<div id="mensaje" th:text="${pagoRealizado}"></div>
+		</div>
+		<div id="mensaje" th:if="${pagoHecho != null}" class="alert alert-danger">
+    		<div id="mensaje" th:text="${pagoHecho}"></div>
+		</div>
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		    <table>
+        <thead>
+            <tr>
+                <h1 style="text-align: center; color: forestgreen;">Servicio a Pagar</h1>
+            </tr>
+            <br><br><br>
+        </thead>
+        <tbody>
+            <tr th:each="servicio: ${servicio}" style="text-align: center;">
+                <td style="color: forestgreen;">
+                 <img class="img-thumbnail"  th:if="${servicio.imagen != null}" th:src="@{'/registration/showImage/' + ${servicio.id}}" alt="Servicio Image" style="width: 50%;"/>
+			    <span th:if="${servicio.imagen == null}">No hay imagen disponible</span>
+                    <h3>Nombre: [[ ${servicio.nombre} ]]</h3>
+                    <h3>Costo: $[[ ${servicio.costo} ]]</h3>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   <form th:action="@{/registration/realizarPago(userEmail=${usuario.email})}" method="post" style="width: 25%; margin-left: 37%;">
+       
+       <div class = "form-group">
+		    <input class="form-control hacker-input" type="email" name="correo" placeholder="Correo"/>
+       </div>
+       
+       <div class = "form-group">
+       <input class="form-control hacker-input" type="number" name="valor" placeholder="Valor" required />
+       </div>
+       
+        
+        <input type="hidden" name="servicioId" th:value="${servicio.id}" />
+        <input class="form-control btn btn-primary hacker-btn" type="submit" value="Pagar" />
+    </form>
+<br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+
+	<script ht:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var errorContainer = document.getElementById('mensaje');
+            if (errorContainer) {
+                errorContainer.style.display = 'none';
+            }
+        }, 2000);
+    });
+</script>
+</body>
+</html>

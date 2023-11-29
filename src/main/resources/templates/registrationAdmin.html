@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration (Admin)</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>	
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+</head>
+<body>
+
+<div id="particles-js"></div>
+<nav class="navbar">
+    <div class="linee top"></div>
+    <ul>
+        <li><a class="navbar-brand" th:href="@{/}">Home</a></li>
+    </ul>
+    <div class="linee bottom"></div>
+    <img alt="Logo" style="width: 12%; " src="/K.png" class="logo3">
+    
+</nav>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+			
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
+
+				<h1>Registration Admin</h1>
+
+				<form th:action="@{/registrationAdmin}" method="post" th:object="${admin}">
+					<div class="form-group">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="firstName" class="form-control hacker-input" th:field="*{firstName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="lastName"> Last Name </label> <input
+							id="lastName" class="form-control hacker-input" th:field="*{lastName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email </label> <input
+							id="email" class="form-control hacker-input" th:field="*{email}" required
+							autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="password"> Password </label> <input
+							id="password" class="form-control hacker-input" type="password"
+							th:field="*{password}" required autofocus="autofocus" />
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="control-label" for="password"> Telefrono </label> <input
+							id="telefono" class="form-control hacker-input" type="number"
+							th:field="*{telefono}" required autofocus="autofocus" />
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="control-label" for="direccion"> Direccion </label> <input
+							id="direccion" class="form-control hacker-input" type="text"
+							th:field="*{direccion}" required autofocus="autofocus" />
+					</div>
+										<div class="form-group">
+						<button type="submit" class="form-control btn btn-primary hacker-btn">Register</button>
+						<span>Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+	
+</body>
+</html>

@@ -1,0 +1,154 @@
+<html xmlns=th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="shortcut icon" th:href="@{/Ico.png}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+
+    
+	<title>Listado de Usuarios</title>
+	
+</head>
+<body style="background-color: black;">
+	
+	<div id="particles-js"></div>
+	<header>
+
+	<div>
+		<a  type="button" th:href="@{/registrationAdmin/newUser}" class="form-control btn btn-primary hacker-btn"  style="margin-left: 20px; margin-top: 20px; width: 20%; background-color: black;">
+			<strong>Insertar un Usuario</strong>	
+		</a>
+	</div>	
+	
+	<div>
+		<a  type="button" th:href="@{/registrationAdmin/GestionRoles}" class="form-control btn btn-primary hacker-btn"  style="margin-left: 20px; margin-top: 20px; width: 20%; background-color: black;">
+			<strong>Regresare</strong>
+		</a>
+	</div>	
+	</header>
+	
+	<main>
+		<table class="tableDatos" border="1" style="margin: 0; margin-left: 80px;">
+					<h1 class="tituloListadoEstudiantes">Gestion de Usuarios</h1>
+				
+			
+			<thead>
+				<tr style="text-align: center; background-color: rgb(0, 255, 0);">
+					<th><strong>id</strong></th>
+					<th><strong>Nombre</strong></th>
+					<th><strong>Apellido</strong></th>
+					<th><strong>Email</strong></th>
+					<th><strong>Password</strong></th>
+					<th><strong>Telefono</strong></th>
+					<th><strong>Direccion</strong></th>
+					<th><strong>Servicios del Usuario</strong></th>
+					<th><strong>Imagen<br> Global</strong></th>
+					<th><strong>Acciones</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="usuario: ${usuarios}" style="text-align: center; color: forestgreen;">
+					<td>[[ ${usuario.id} ]]</td>
+					<td>[[ ${usuario.firstName} ]]</td>
+					<td>[[ ${usuario.lastName} ]]</td>
+					<td>[[ ${usuario.email}  ]] </td>
+					<td>[[ ${usuario.password}  ]] </td>
+					<td>[[ ${usuario.telefono}  ]] </td>
+					<td>[[ ${usuario.direccion}  ]] </td>
+					
+					
+					
+			<td>
+			    <ul th:if="${usuario.servicios != null}">
+			        <p th:each="servicio : ${usuario.servicios}" th:if="${servicio.requerido == 'Requerido'}">
+			            <span th:text="${servicio.nombre}"></span>
+			        </p>
+			    </ul>
+			</td>
+			
+			<td>
+			    <img th:if="${usuario.imagen != null}" th:src="@{'/registrationAdmin/showImageUser/' + ${usuario.id}}" alt="User Image" style="width: 100%;"/>
+			    <span th:if="${usuario.imagen == null}">No hay imagen disponible</span>
+			</td>
+
+
+				<td>
+	
+            
+                        <a class="mx-3 text-warning" th:href="@{/registrationAdmin/editUser/{id}(id = ${usuario.id})}" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </a>
+                
+
+		  		<a class="mx-3 text-danger eliminar-link" th:attr="data-usuario-id=${usuario.id}" onclick="verificarEliminar(this.getAttribute('data-usuario-id'))">
+		            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+		                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+		                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+		            </svg>
+		        </a>
+		        <!-- Usa el servicio.id para crear un identificador único -->
+		        <a th:id="'eliminarLink-' + ${usuario.id}" th:href="@{/registrationAdmin/deleteUser/{id}(id=${usuario.id})}" style="display:none;"></a>
+				
+					
+					</td>
+					
+				</tr>
+				
+			</tbody>
+
+		</table>		
+	</main>
+	
+	
+
+<script>
+async function verificarEliminar(userId) {
+    const willDelete = await swal({
+        title: "¿Realmente quiere eliminar el registro?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    });
+
+    if (willDelete) {
+        // Obtén el enlace de eliminación específico para el servicio actual
+        const eliminarLink = document.getElementById(`eliminarLink-${userId}`);
+
+        // Esperar la interacción del usuario antes de redirigir
+        await swal({
+            title: "Registro eliminado",
+            text: "",
+            icon: "success",
+            button: "Aceptar"
+        });
+
+        eliminarLink.click(); // Clic en el enlace específico para el servicio actual
+    } else {
+        swal("Acción Cancelada!");
+    }
+}
+</script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+
+</body>
+</html>

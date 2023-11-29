@@ -1,0 +1,340 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Chakra Petch', sans-serif;
+	font-family: 'KoHo', sans-serif;
+	font-family: 'Mali', cursive;
+	font-family: 'Urbanist', sans-serif;
+}
+
+#styleMap{
+	margin-left: 34%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	
+}
+
+
+body{
+	background-color: black;
+}
+
+
+#particles-js {
+  position: fixed;
+  z-index: -1; /* Set a negative z-index to place it behind other elements */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Barra de Nav*/
+
+.navbar {
+/* Color de fondo de la barra de navegación */
+    overflow: hidden;
+    padding: 18px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar li {
+    float: left;
+   margin: 0;
+}
+
+.navbar a {
+    display: block;
+    color: white; /* Color del texto de los enlaces */
+    text-align: center;
+    padding: 14px 50px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 255, 0)); /* Color de fondo al pasar el ratón sobre los enlaces */
+    color: black; /* Color del texto al pasar el ratón sobre los enlaces */
+}
+
+.line {
+    height: 2px;
+    width: 36%;
+}
+
+.linee {
+    height: 2px;
+    width: 12%;
+}
+
+.lineee {
+    height: 2px;
+    width: 52%;
+}
+
+.lineeee {
+    height: 2px;
+    width: 27%;
+}
+
+.top {
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 255, 0)); /* Color de la línea superior */
+}
+
+.bottom {
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 255, 0));/* Color de la línea inferior */
+}
+
+
+.navbar img{
+	margin-left: 84%;
+	margin-top: -4%;
+}
+
+
+
+
+
+
+
+
+
+/*Footer*/
+
+
+footer {
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 128, 0)); /* Color de fondo del footer */
+    color: white; /* Color del texto del footer */
+    padding: 40px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    text-align: left;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    margin: 10px 0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.social-icons li {
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 30px; /* Tamaño de los iconos de redes sociales */
+}
+
+
+
+/*Contactenos*/
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px;
+            color: forestgreen;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .text {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .image {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+
+
+/*Estilos inputs*/
+
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+/* Estilos para las etiquetas */
+.hacker-label {
+    color: #00ff00; /* Verde */
+}
+
+/* Estilos para los input */
+.hacker-input {
+    background-color: #000000; /* Negro */
+    color: #00ff00; /* Verde */
+    border: 1px solid #00ff00; /* Borde verde */
+}
+
+/* Estilos para el botón */
+.hacker-btn {
+    background-color: #000000; /* Negro */
+    color: #00ff00; /* Verde */
+    border: 1px solid #00ff00; /* Borde verde */
+}
+
+/* Estilo adicional para resaltar el botón al pasar el ratón sobre él */
+.hacker-btn:hover {
+    background-color: #001a00; /* Verde oscuro */
+}
+
+
+
+/*Tablas*/
+
+
+.tableDatos {
+       border-collapse: collapse;
+       width: 80%;
+       margin-top: 20px;
+       background-color: transparent; /* Fondo transparente */
+       border: 3px solid green; /* Líneas de color verde */
+       margin-left: 10%;
+}
+
+.tableDatos th, .tableDatos td {
+       border: 3px solid green; /* Líneas de color verde para celdas */
+       padding: 10px;
+}
+
+.tableDatos th {
+      background-color: rgb(255, 255, 255);
+      text-align: center;
+}
+
+        .tituloListadoEstudiantes {
+            text-align: center;
+            color: white;
+            background-color: green;
+            padding: 10px;
+        }
+
+.tableDatos tbody tr:nth-child(even) {
+     background-color: rgba(0, 255, 0, 0.1); /* Fondo verde claro para filas pares */
+}
+
+.tableDatos tbody tr:nth-child(odd) {
+     background-color: rgba(0, 255, 0, 0.2); /* Fondo verde más oscuro para filas impares */
+}
+
+
+
+
+
+
+.containerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% del alto de la ventana */
+   
+}
+
+.center-contentt {
+    text-align: center;
+   
+}
+
+.center-contentt a{
+    color: rgb(0, 255, 0);
+   
+}
+
+/* Estilos específicos para los enlaces (puedes ajustar según tus preferencias) */
+.hacker-link {
+    font-size: 24px;
+    margin: 10px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease; /* Agrega transición al color */
+}
+
+.hacker-link:hover {
+    color: #0F0; /* Cambia el color al pasar el mouse sobre el enlace */
+}
+
+/* Agrega un efecto de pseudo-elemento para un destello */
+.hacker-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0F0 0%, transparent 50%, #0F0 100%); /* Degradado verde */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Agrega transición a la opacidad */
+}
+
+.hacker-link:hover::before {
+    opacity: 1; /* Hace visible el destello al pasar el mouse sobre el enlace */
+}
+
+
+
+
+
+
+
+
+

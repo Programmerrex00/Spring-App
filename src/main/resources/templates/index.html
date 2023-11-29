@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="//code.tidio.co/npeqywq3krx6zmvddjgv1dnuxdudmheo.js" async></script>
+	<script src="../function.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+
+
+
+
+<nav class="navbar">
+    <div class="lineee top"></div>
+    <ul>
+        <li><a class="navbar-brand" th:href="@{/}">Home</a></li>
+
+		 <img th:if="${pictureUrl != null}" th:src="${pictureUrl}" alt="Profile Picture">
+		 
+		 
+        <li><a class="navbar-brand" href="#" th:href="@{/registration/verBolso(email=${email})}">Bolso Virtual</a></li>
+       
+       <li><a class="navbar-brand" href="#" th:href="@{/registration/mostrarHistorial(email=${email})}">Acciones de Compra</a></li>
+       
+       
+        <li><a class="navbar-brand" th:href="@{/conocenos}">Conócenos</a></li>
+        
+        
+    	
+         <li style="color: forestgreen;" sec:authorize="isAuthenticated()"><a th:href="@{/logout}">
+			<img width="30" height="30" style="color: green;" src="https://img.icons8.com/ios/50/exit--v1.png" alt="exit--v1"/>
+		</a></li>    
+
+    </ul>
+
+    <div class="lineee bottom"></div>
+		<li style="margin-left: 66%; margin-top: -90px;">
+			<div>
+				
+		
+					<div>
+						<input style="width: 50%;" class="form-control hacker-input" placeholder="Search" type="text" onkeyup="buscarr()" id="buscar">
+					</div>
+	
+				
+				
+				<img th:if="${user.imagen != null}" th:src="@{'/registration/showImageUserPerfil/' + ${user.id}}"
+					alt="User Image" style="width: 30%; margin-left: 90%;" />
+				<span th:if="${user.imagen == null}">
+					<img alt="Logo" style="width: 19%;" src="/SinFoto.png" class="logo3">
+				</span>
+				<p style="color: rgb(0, 128, 0); font-size: 20px; margin-left: 73%;" th:text="${email}">N/A</p>
+			</div>
+		</li>
+    
+</nav>
+	<br><br><br><br><br><br><br><br>
+
+	
+	<table id="datos">
+		<thead >
+			<tr>
+				<h1 style="text-align: center; color: forestgreen;">Servicios Tecnológicos</h1>
+			</tr>
+		</thead>
+		<br><br>
+		<tbody>
+			<tr th:each="servicio: ${servicios}" style="text-align: center;">
+			<td style="color: forestgreen;">
+			    <img class="img-thumbnail" th:if="${servicio.imagen != null}" th:src="@{'/registration/showImage/' + ${servicio.id}}" alt="Servicio Image" style="width: 80%;"/>
+			    <span th:if="${servicio.imagen == null}">No hay imagen disponible</span>
+				<br>
+				<br>
+				<h2>[[ ${servicio.nombre} ]]</h2>
+				<h3 style="max-width: 50%; margin-left: 25%;">[[ ${servicio.descripcion} ]]</p>
+				<h3>Costo: $[[ ${servicio.costo} ]]</h3>
+				<h3>Proveedor: [[ ${servicio.proveedor} ]]</h3>
+				<h3>Categoria: [[ ${servicio.categoria} ]]</h3>
+				<p style="font-size: 15px;" th:text="${#dates.format(servicio.fechaLanzamiento, 'yyyy-MM-dd')}"></p>
+				
+				<div style="font-size: 19px;" th:each="tecnologia : ${servicio.tecnologias}">
+        			[[${tecnologia}]]<br>
+    			</div>
+    			<br><br>
+    			
+				
+			<form th:action="@{/registration/agregarAlCarrito}" method="post" th:object="${user}">
+	            <input type="hidden" th:name="servicioId" th:value="${servicio.id}" />
+	            <input type="hidden" th:name="userEmail" th:value="${email}" />
+	            <button type="submit" class="form-control btn btn-primary hacker-btn" style="width: 30%;">Agregar al Carrito</button>
+	        </form>
+			<br>
+	        <form th:action="@{/registration/comprar}" method="post" th:object="${user}">
+	            <input type="hidden" th:name="servicioId" th:value="${servicio.id}" />
+	            <input type="hidden" th:name="userEmail" th:value="${email}" />
+	            <button type="submit" class="form-control btn btn-primary hacker-btn" style="width: 30%;">Comprar Servicio</button>
+	        </form>
+        
+				<br><br><br><br>
+				
+				
+			</td>
+		
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Contacto</h3>
+            <p>Email: maicolcubidespe@gmail.com</p>
+            <p>Teléfono: +57 321 400 36 84</p>
+        </div>
+        <div class="footer-column">
+            <h3>Redes Sociales</h3>
+            <ul class="social-icons">
+                <li> <img width="190px" src="https://img.icons8.com/fluency/48/facebook.png" alt="facebook"/></li>
+                <li><img width="190px" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram-new"/></li>
+                <li><img width="190px" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2"/></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/function.js" type="text/javascript"></script>
+<script src="/pa.js" type="text/javascript"></script>
+
+
+
+</body>
+</html>
